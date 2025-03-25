@@ -6,6 +6,8 @@ This repository is the official implementation of CVPR 2025 "Channel Consistency
 
  <p align="center">
  **[Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining](https://arxiv.org/abs/2503.18703)**
+  
+  <p align="center">
  </br>
 [Guanglu Dong](https://github.com/GuangluDong0728) $^{1}$,
 Tianheng Zheng $^{1}$,
