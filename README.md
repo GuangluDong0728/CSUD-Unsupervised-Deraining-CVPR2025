@@ -1,7 +1,7 @@
 # [CVPR2025] Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining
 <p align="center">
 <a href="https://arxiv.org/abs/2503.18703"><img src="https://img.shields.io/badge/arXiv-Paper-<color>"></a>
- 
+ Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining
  </br>
 [Guanglu Dong](https://github.com/GuangluDong0728) $^{1}$,
 Tianheng Zheng $^{1}$,
