@@ -16,6 +16,6 @@ $^{2}$ Beijing Jiaotong University,
 This repository is the official implementation of CVPR 2025 "Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining".
 
 <p align="center">
-<img src="imgs/realshot_final.png" :height="100px">
+<img src="imgs/realshot.png" :height="100px">
 
 # Code is Coming soon!!
