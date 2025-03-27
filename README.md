@@ -1,13 +1,12 @@
 # [CVPR2025] Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining
-<p align="center">
-    <img src="imgs/CSUD.png" width="1000px"/>
-</p>
-
-
 This repository is the official implementation of CVPR 2025 "Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining".
 
 <p align="center">
 <a href="https://arxiv.org/abs/2503.18703"><img src="https://img.shields.io/badge/arXiv-Paper-<color>"></a>
+    
+<p align="center">
+    <img src="imgs/CSUD.png" width="1000px"/>
+</p>
 
  **[Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining](https://arxiv.org/abs/2503.18703)**
  </br>
