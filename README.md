@@ -1,6 +1,6 @@
 # [CVPR2025] Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining
 <p align="center">
-    <img src="imgs/CSUD.png" width="800px"/>
+    <img src="imgs/CSUD.png" width="1000px"/>
 </p>
 
 
