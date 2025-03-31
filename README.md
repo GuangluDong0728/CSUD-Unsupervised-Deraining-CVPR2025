@@ -22,4 +22,9 @@ $^{2}$ Beijing Jiaotong University
 <p align="center">
 <img src="imgs/realshot.png" :height="100px">
 
+# Downloading Our Weights
+
+1. **Download Pretrained Weights:**
+   - Navigate to [this link](https://drive.google.com/drive/folders/1QYcP8mR-18SrXYNn_Tqzel03vaQIKyk5?usp=sharing) to download our weights. You only need to download the "net_g_final.pth" file.
+
 # Code is Coming soon!!
