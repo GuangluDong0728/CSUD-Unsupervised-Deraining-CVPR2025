@@ -25,6 +25,6 @@ $^{2}$ Beijing Jiaotong University
 # Downloading Our Weights
 
 1. **Download Pretrained Weights:**
-   - Navigate to [this link](https://drive.google.com/drive/folders/1QYcP8mR-18SrXYNn_Tqzel03vaQIKyk5?usp=sharing) to download our weights. You only need to download the "net_g_final.pth" file.
+   - Navigate to [this link](https://drive.google.com/drive/folders/1QYcP8mR-18SrXYNn_Tqzel03vaQIKyk5?usp=sharing) to download our weights. Our CSUD is built on source codes shared by [BasicSR](https://github.com/XPixelGroup/BasicSR) and [NAFNet](https://github.com/megvii-research/NAFNet), please use NAFNet (the version with width of 32) to test all of our models.
 
 # Code is Coming soon!!
