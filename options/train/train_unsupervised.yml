@@ -1,5 +1,5 @@
 # general settings
-name: deblur_4_allblur
+name: unsupervised_deraining
 model_type: UnsupervisedModel
 scale: 1
 num_gpu: 1
@@ -8,89 +8,65 @@ manual_seed: 728
 # dataset and data loader settings
 datasets:
   train1:
-    name: gopro
+    name: rain
     type: UnsupervisedDataset
-    dataroot_gt: datasets/ALLBlur/blur
-    dataroot_lq: datasets/ALLBlur/blur
+    dataroot_gt: ~ #rainy_images_root
+    dataroot_lq: ~ #rainy_images_root
     filename_tmpl: '{}'
     io_backend:
       type: disk
 
-    gt_size: 64
-    use_hflip: false
+    gt_size: 256
+    use_hflip: true
     use_rot: false
 
     # data loader
     num_worker_per_gpu: 6
-    batch_size_per_gpu: 2
+    batch_size_per_gpu: 2 # batchsize set to 1 or 2
     dataset_enlarge_ratio: 1
     prefetch_mode: ~
 
   train2:
-    name: gopro
+    name: gt
     type: UnsupervisedDataset
-    dataroot_gt: datasets/ALLBlur/sharp
-    dataroot_lq: datasets/ALLBlur/sharp
+    dataroot_gt: ~ #clean_images_root
+    dataroot_lq: ~ #clean_images_root
     filename_tmpl: '{}'
     io_backend:
       type: disk
 
-    gt_size: 64
-    use_hflip: false
+    gt_size: 256
+    use_hflip: true
     use_rot: false
 
     # data loader
     num_worker_per_gpu: 6
-    batch_size_per_gpu: 2
+    batch_size_per_gpu: 2 # batchsize set to 1 or 2
     dataset_enlarge_ratio: 1
     prefetch_mode: ~
 
   val_1:
-    name: gopro
+    name: test
     type: PairedImageDataset
-    dataroot_gt: datasets/GOPRO/TEST/sharp
-    dataroot_lq: datasets/GOPRO/TEST/blur
-    io_backend:
-      type: disk
-
-  val_2:
-    name: HIDE
-    type: PairedImageDataset
-    dataroot_gt: datasets/HIDE/test/target
-    dataroot_lq: datasets/HIDE/test/input
-    io_backend:
-      type: disk
-
-  val_3:
-    name: REALBLUR_J
-    type: PairedImageDataset
-    dataroot_gt: datasets/RealBlur/test/RealBlur_J/target
-    dataroot_lq: datasets/RealBlur/test/RealBlur_J/input
-    io_backend:
-      type: disk
-
-  val_4:
-    name: REALBLUR_R
-    type: PairedImageDataset
-    dataroot_gt: datasets/RealBlur/test/RealBlur_R/target
-    dataroot_lq: datasets/RealBlur/test/RealBlur_R/input
+    dataroot_gt: ~ #test_clean_images_root
+    dataroot_lq: ~ #test_rainy_images_root
     io_backend:
       type: disk
 
 # network structures
 network_g:
-  # type: NAFNet
-  # img_channel: 3
-  # width: 32
-  # middle_blk_num: 12
-  # enc_blk_nums: [2, 2, 4, 8]
-  # dec_blk_nums: [2, 2, 2, 2]
-  type: NAFNetLocal
+  type: NAFNet
   img_channel: 3
-  width: 64
-  enc_blk_nums: [1, 1, 1, 28]
-  middle_blk_num: 1
-  dec_blk_nums: [1, 1, 1, 1]
+  width: 32
+  middle_blk_num: 12
+  enc_blk_nums: [2, 2, 4, 8]
+  dec_blk_nums: [2, 2, 2, 2]
+  # type: NAFNetLocal
+  # img_channel: 3
+  # width: 64
+  # enc_blk_nums: [1, 1, 1, 28]
+  # middle_blk_num: 1
+  # dec_blk_nums: [1, 1, 1, 1]
 
 network_t:
   type: _NetG_DOWN_init
@@ -102,15 +78,15 @@ network_d:
 
 # path
 path:
-  pretrain_network_g: experiments/deblur_3/models/net_g_20000.pth
+  pretrain_network_g: ~
   strict_load_ir: true
   resume_state: ~
 
-  pretrain_network_t: experiments/deblur_3/models/net_t_20000.pth
+  pretrain_network_t: ~
   strict_load_g: true
   resume_state: ~
 
-  pretrain_network_d: experiments/deblur_3/models/net_d_20000.pth
+  pretrain_network_d: ~
   strict_load_d: true
   resume_state: ~
 
@@ -136,11 +112,11 @@ train:
 
   scheduler:
     type: MultiStepLR
-    # milestones: [40000, 60000]
-    milestones: [100000]
+    milestones: [20000, 40000, 60000, 80000]
+    # milestones: [100000]
     gamma: 0.5
 
-  total_iter: 80000
+  total_iter: 100000
   warmup_iter: -1  # no warm up
 
   # losses
@@ -148,9 +124,9 @@ train:
     type: L1Loss
     loss_weight: 1.0
     reduction: mean
-  # ssim_opt:
-  #   type: log_SSIM_loss
-  #   loss_weight: 1.0
+  ssim_opt:
+    type: log_SSIM_loss
+    loss_weight: 1.0
   perceptual_opt:
     type: PerceptualLoss
     layer_weights:
@@ -162,7 +138,7 @@ train:
       'conv5_4': 1
     vgg_type: vgg19
     use_input_norm: true
-    perceptual_weight: !!float 0.1
+    perceptual_weight: !!float 0.2
     style_weight: 0
     range_norm: false
     criterion: l1
