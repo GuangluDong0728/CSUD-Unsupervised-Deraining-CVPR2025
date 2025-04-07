@@ -1,5 +1,5 @@
 # [CVPR2025] Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining
-This repository is the official implementation of CVPR 2025 "Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining".
+This repository is the official implementation of CVPR 2025 "Channel Consistency Prior and Self-Reconstruction Strategy Based Unsupervised Image Deraining". The testing and training code, as well as all the pre-trained weights, have been open sourced!!!
 
 <p align="center">
 <a href="https://arxiv.org/abs/2503.18703"><img src="https://img.shields.io/badge/arXiv-Paper-<color>"></a>
