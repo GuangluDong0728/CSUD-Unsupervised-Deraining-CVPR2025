@@ -1,0 +1,197 @@
+name:  desnow16000
+suffix: ~  # add suffix to saved images
+model_type: SRModel
+scale: 1
+crop_border: 0  # crop border when evaluation. If None, crop the scale pixels
+num_gpu: 1  # set num_gpu: 0 for cpu mode
+manual_seed: 0
+
+datasets:
+  test_1:  # the 1st test dataset
+    # name: Rain100L
+    # type: PairedImageDataset
+    # dataroot_gt: /root/autodl-tmp/unsupervised deraining/datasets/Rain13k/Rain100L/target
+    # dataroot_lq: /root/autodl-tmp/unsupervised deraining/datasets/Rain13k/Rain100L/input
+    # io_backend:
+    #   type: disk
+    name: CSD
+    type: PairedImageDataset
+    dataroot_gt: datasets/CSD/test/Gt
+    dataroot_lq: datasets/CSD/test/Snow
+    io_backend:
+      type: disk
+  # test_1:  # the 1st test dataset
+  #   name: rebuttal
+  #   type: PairedImageDataset
+  #   dataroot_gt: datasets/rebuttal/test/gt
+  #   dataroot_lq: datasets/rebuttal/test/input
+  #   io_backend:
+  #     type: disk
+  # test_2:  # the 2nd test dataset
+  #   name: Rain12
+  #   type: PairedImageDataset
+  #   dataroot_gt: datasets/test12_oushu/groundtruth
+  #   dataroot_lq: datasets/test12_oushu/rainy
+  #   io_backend:
+  # #     type: disk
+  # test_3:  # the 1st test dataset
+    # name: SPA
+    # type: PairedImageDataset
+    # dataroot_gt: datasets/SPA/norain
+    # dataroot_lq: datasets/SPA/rain
+    # io_backend:
+    #   type: disk
+  # # test_2:  # the 2nd test dataset
+  # #   name: rain100H
+  # #   type: PairedImageDataset
+  # #   dataroot_gt: datasets/Rain13k/Rain100H/target
+  # #   dataroot_lq: datasets/Rain13k/Rain100H/input
+  # #   io_backend:
+  # #     type: disk
+  # # test_2:  # the 2nd test dataset
+  # #   name: test100
+  # #   type: PairedImageDataset
+  # #   dataroot_gt: datasets/Rain13k/Test100/target
+  # #   dataroot_lq: datasets/Rain13k/Test100/input
+  # #   io_backend:
+  # #     type: disk
+  # test_4:  # the 2nd test dataset
+  #   name: RainDS
+  #   type: PairedImageDataset
+  #   dataroot_gt: datasets/RainDS/gt
+  #   dataroot_lq: datasets/RainDS/rainstreak
+  #   io_backend:
+  #     type: disk
+  # test_5:  # the 2nd test dataset
+  #   name: RealRain1kL
+  #   type: PairedImageDataset
+  #   dataroot_gt: datasets/Realrain1k-L/test/target
+  #   dataroot_lq: datasets/Realrain1k-L/test/input
+  #   io_backend:
+  #     type: disk
+  # test_6:  # the 2nd test dataset
+  #   name: RealRain1kH
+  #   type: PairedImageDataset
+  #   dataroot_gt: datasets/Realrain1K-H/test/target
+  #   dataroot_lq: datasets/Realrain1K-H/test/input
+  #   io_backend:
+  #     type: disk
+  # test_7:  # the 1st test dataset
+  #   name: InterNet
+  #   type: PairedImageDataset
+  #   dataroot_gt: /root/autodl-tmp/unsupervised deraining/datasets/real_input
+  #   dataroot_lq: /root/autodl-tmp/unsupervised deraining/datasets/real_input
+  #   io_backend:
+  #     type: disk
+  # test_8:  # the 1st test dataset
+  #   name: GTAV-NightRain
+  #   type: PairedImageDataset
+  #   dataroot_gt: /root/autodl-tmp/unsupervised deraining/datasets/GTAV-NightRain/test/gt_all
+  #   dataroot_lq: /root/autodl-tmp/unsupervised deraining/datasets/GTAV-NightRain/test/rainy
+  #   io_backend:
+  #     type: disk
+  # test_7:  # the 1st test dataset
+  #   name: NERD-Visual
+  #   type: PairedImageDataset
+  #   dataroot_gt: datasets/test_nerd
+  #   dataroot_lq: datasets/test_nerd
+  #   io_backend:
+  #     type: disk
+  # test_7:  # the 1st test dataset
+  #   name: NERD-Visual
+  #   type: PairedImageDataset
+  #   dataroot_gt: datasets/1
+  #   dataroot_lq: datasets/1
+  #   io_backend:
+  #     type: disk
+
+# network structures
+# network structures
+network_g:
+  type: NAFNet
+  img_channel: 3
+  width: 32
+  middle_blk_num: 12
+  enc_blk_nums: [2, 2, 4, 8]
+  dec_blk_nums: [2, 2, 2, 2]
+# network_g:
+#   type: DRSformer
+#   inp_channels: 3
+#   out_channels: 3
+#   dim: 48
+#   num_blocks: [4,6,6,8]
+#   heads: [1,2,4,8]
+#   ffn_expansion_factor: 2.66
+#   bias: False
+#   LayerNorm_type: WithBias
+# network_g:
+#   type: PromptIR
+#   decoder: true
+# network_g:
+#   type: ResnetGenerator
+#   input_nc: 3
+#   output_nc: 3
+#   ngf: 64
+#   use_dropout: false
+#   no_antialias: false
+#   no_antialias_up: false
+#   n_blocks: 6
+# network_g:
+#   type: Generator
+#   inchannel: 3
+#   outchannel: 3
+# network_g:
+#   type: Restormer
+#   inp_channels: 3
+#   out_channels: 3
+#   dim: 48
+#   num_blocks: [4,6,6,8]
+#   num_refinement_blocks: 4
+#   heads: [1,2,4,8]
+#   ffn_expansion_factor: 2.66
+#   bias: False
+#   LayerNorm_type: WithBias
+#   dual_pixel_task: False
+# network_g:
+#   type: MPRNet
+# network_g:
+#   type: NERD
+# network_g:
+#   type: DerainCycleGAN
+
+
+# path
+path:
+  pretrain_network_g: experiments/desnow_CSD/models/net_ir_16000.pth
+  strict_load_g: true
+  resume_state: ~
+  # param_key: params_ema
+
+# validation settings
+val:
+  save_img: true
+  suffix: ~  # add suffix to saved images, if None, use exp name
+
+  metrics:
+    psnr: # metric name, can be arbitrary
+      type: calculate_psnr
+      crop_border: 0
+      test_y_channel: false
+    ssim:
+      type: calculate_ssim
+      crop_border: 0
+      test_y_channel: false
+    # lpips:
+    #   type: calculate_lpips
+    #   crop_border: 0
+    # dists:
+    #   type: calculate_dists
+    #   crop_border: 1
+    # niqe: # metric name, can be arbitrary
+    #   type: calculate_niqe
+    #   crop_border: 0
+    #   test_y_channel: false
+    # fid: # metric name, can be arbitrary
+    #   type: calculate_fid
+    #   # crop_border: 0
+    #   # test_y_channel: false
