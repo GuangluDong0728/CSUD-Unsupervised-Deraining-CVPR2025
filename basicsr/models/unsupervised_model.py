@@ -187,14 +187,14 @@ class UnsupervisedModel(BaseModel):
         real_lr_A = self.lq
         real_hr_B = self.gt
 
-        #LR和HR融合以后输入到生成器中
+        #baseline
         fake_lr_B = self.net_t(real_hr_B, real_lr_A)
         fake_hr_B = self.net_g(fake_lr_B.detach())
         fake_hr_A = self.net_g(real_lr_A.detach())
         fake_lr_A = self.net_t(fake_hr_A, real_lr_A)
         fake_lr_A2 = self.net_t(fake_hr_A, fake_lr_B)
         fake_lr_B2 = self.net_t(fake_hr_B, fake_lr_B)
-        #自监督约束
+        #self-reconstruction
         fake_hr_Bn1 = self.net_t(real_hr_B, real_hr_B)#约束生成器
         fake_hr_Bn2 = self.net_t(real_hr_B, fake_hr_A)#约束生成器和复原器
         fake_hr_Bn3 = self.net_t(real_hr_B, fake_hr_B)#约束复原器
