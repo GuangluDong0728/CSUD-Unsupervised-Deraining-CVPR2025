@@ -1,0 +1,1 @@
+You need to download Rain100L train dataset, Rain100H train dataset, test12 dataset, Rain13K test dataset (rain100l/test100/rain100h), SPA test dataset, RealRain1kL, RealRain1kH, RainDS, InterNet-DATA, GTAV-NightRain.
