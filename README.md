@@ -55,10 +55,10 @@ python basicsr/train_unsupervised.py -opt options/train/train_unsupervised.yml
 ```
 
 ## Testing
-To test our model, please open the `options/train/train_unsupervised.yml` file and update the paths, and just run the command:
+To test our model, please open the `options/test/Derain/test_deraining.yml` file and update the paths, and just run the command:
 
 ```bash
-python basicsr/train_unsupervised.py -opt options/test/Derain/test_deraining.yml
+python basicsr/test.py -opt options/test/Derain/test_deraining.yml
 ```
 
 # Acknowledgements
